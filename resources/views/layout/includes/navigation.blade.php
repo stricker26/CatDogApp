@@ -9,13 +9,13 @@
                <div class="collapse navbar-collapse" id="navbarNavDropdown">
                   <ul class="navbar-nav">
                      <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home</a>
+                        <a class="nav-link {{ $className == 'home' ? 'active' : '' }}" aria-current="page" href="{{ route('home') }}">Home</a>
                      </li>
                      <li class="nav-item">
-                        <a class="nav-link" href="#">Cats</a>
+                        <a class="nav-link {{ $className == 'cats' ? 'active' : '' }}" href="{{ route('cats') }}">Cats</a>
                      </li>
                      <li class="nav-item">
-                        <a class="nav-link" href="#">Dogs</a>
+                        <a class="nav-link {{ $className == 'dogs' ? 'active' : '' }}" href="{{ route('dogs') }}">Dogs</a>
                      </li>
                   </ul>
                </div>

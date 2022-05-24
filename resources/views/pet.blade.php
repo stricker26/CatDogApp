@@ -1,4 +1,4 @@
-@extends('layout.master', ['title' =>  $pet[0]->name, 'description' => $pet[0]->name, 'image' => $petImage])
+@extends('layout.master', ['title' =>  $pet[0]->name, 'description' => $pet[0]->name, 'image' => $petImage, 'className' => ''])
 
 @section('content')
 <div class="container">
