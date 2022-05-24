@@ -1,10 +1,10 @@
-@extends('layout.master', ['title' => 'Home', 'description' => 'Welcome to world class pet shop.', 'image' => ''])
+@extends('layout.master', ['title' =>  $pet[0]->name, 'description' => $pet[0]->name, 'image' => $petImage])
 
 @section('content')
 <div class="container">
    <div class="row">
       <div class="col-md-6">
-         <img src="{{ asset($petImage) }}" alt="{{ $pet[0]->name }}" class="w-100" />
+         <img src="{{ $petImage }}" alt="{{ $pet[0]->name }}" class="w-100" />
       </div>
       <div class="col-md-6">
          <h3>{{ $pet[0]->name }}</h3>

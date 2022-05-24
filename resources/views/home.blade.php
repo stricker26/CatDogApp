@@ -42,13 +42,25 @@
                <div class="card-body">
                   <h5 class="card-title">{{ mb_strimwidth($dog->name, 0, 23, '...') }}</h5>
                   <p class="card-text">
-                     {{ mb_strimwidth($dog->temperament, 0, 50, '...') }}
+                     {{ isset($dog->temperament) ? mb_strimwidth($dog->temperament, 0, 50, '...') : 'No description available' }}
                   </p>
                   <a href="{{ route('getDog', urlencode(strtolower($dog->name))) }}" class="btn btn-primary btn-peugeot-blue rounded-0">READ MORE</a>
                </div>
             </div>
          </div>
       @endforeach
+   </div>
+   <div class="row">
+      <div class="col">
+         <ul class="pagination">
+            <li class="page-item {{ !app('request')->input('page') || app('request')->input('page') == 1 ? 'disabled' : '' }}">
+               <a class="page-link" href="?page={{ !app('request')->input('page') || app('request')->input('page') == 1 ? 1 : app('request')->input('page') - 1 }}">Previous</a>
+            </li>
+            <li class="page-item {{ count(json_decode($dogs['response'])) < 7 && count(json_decode($cats['response'])) < 7 ? 'disabled' : '' }}">
+               <a class="page-link" href="?page={{ !app('request')->input('page') || app('request')->input('page') == 1 ? 2 : app('request')->input('page') + 1 }}">Next</a>
+            </li>
+         </ul>
+      </div>
    </div>
 </div>
 @endsection
