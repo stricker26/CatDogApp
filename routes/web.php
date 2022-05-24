@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [ApiController::class, 'Home'])->name('home');
+Route::group(['prefix' => 'cats'], function() {
+   Route::get('/', [ApiController::class, 'AllCats'])->name('cats');
+   Route::get('/{name}', [ApiController::class, 'GetCat'])->name('getCat');
+});
+Route::group(['prefix' => 'dogs'], function() {
+   Route::get('/', [ApiController::class, 'AllDogs'])->name('dogs');
+   Route::get('/{name}', [ApiController::class, 'GetDog'])->name('getDog');
 });
