@@ -12,7 +12,7 @@ class ApiController extends Controller
         $page = is_numeric($request->input('page')) ? $request->input('page') : 1;
         $dogs = $this->ApiCall('DOG', false, false, $page, $limit);
         $cats = $this->ApiCall('CAT', false, false, $page, $limit);
-
+        
         return view('home', compact('dogs', 'cats'));
     }
 
